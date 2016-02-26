@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-59802572-16', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://xwmooc.net" title="xwMOOC">
+          <img alt="xwMOOC banner" src="img/xwMOOC.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title"></h1>
+          <h2 class="subtitle">The Mess We’re In</h2>
+<p>In the beginning was the finger, and paint, and the wall of the cave. Whoever painted the first pictures this way could create whatever they wanted—the medium allowed them to create anything they could imagine. So did pens and paper: pictures and text could be arranged on the page however the author wanted.</p>
+<p>The first printing presses didn’t change this. They made impressions from woodblock carvings, which still allowed authors to put whatever they wanted wherever they wanted it. But then, around 1370, craftsmen in Korea invented movable type. It spread like wildfire after Gutenberg introduced it to Europe in the 1440s, and humanity’s long fall from written grace began.</p>
+<p>While movable type allowed printers to set pages many times more quickly than carvers could produce woodblocks, the cost was flexibility: where scribes could draw anywhere on the page, typesetters had to put letters of uniform size in rows. And while diagrams were still possible, the lowered cost of words made them relatively many times more expensive than they had been.</p>
+<p>The typewriter (invented in the 1860s) put “printing” in millions of middle-class hands. Mechanical, electrical, and then electronic computers all re-used typewriter technology to print their output. When the first pen plotters appeared in the 1950s, they were too slow and too expensive to displace line printers. What’s more, the two technologies didn’t work well together: it’s possible to draw pictures using ASCII art, or to write letters with a pen plotter, but neither is particularly attractive.</p>
+<p>One sign of this gap between tools meant for words and tools meant for pictures was the development of separate languages for controlling them. Plotters were typically controlled by <em>drawing languages</em> that had commands to say, “Pen up, move to this (x,y) location, pen down, and move again.”</p>
+<pre><code>PU;
+PA200,150;
+PD;
+PA250,250;</code></pre>
+<p><em>Typesetting languages</em> for line printers, on the other hand, let authors tell the computer to lay out a phrase as a second-level heading or set certain words in italics, but it was then the computer’s job to determine where things would go and what they would look like:</p>
+<pre><code>.t2 Section Heading
+
+Empty lines separate
+.it paragraphs
+and lines starting with &#39;.&#39; are commands.</code></pre>
+<p>A third kind of language emerged in this period as well, one meant to describe the <em>content</em> of a document rather than its <em>appearance</em>. Doctors and lawyers wanted to be able to search patient histories and precedents, but the computers of the time weren’t powerful enough to handle natural language. Instead, companies like IBM developed <em>markup languages</em> so that people could make the meaning, or <em>semantics</em>, of their documents explicit:</p>
+<pre><code>&lt;person&gt;Derstmann&lt;/person&gt; still questions the importance of &lt;chemical&gt;methane&lt;/chemical&gt; release
+in &lt;event&gt;the Fukuyama disaster&lt;/event&gt;.</code></pre>
+<p>These worlds collided after the invention of the laser printer in the 1970s, and that tension was only magnified by high-resolution computer screens in the 1980s and the World Wide Web in the 1990s. On the one hand, most people simply want to write—to put these words here and those words there, or make some of them green and others italic. WYSIWIG (what you see is what you get) editors like MacWrite and Microsoft Word fill this need, but documents produced this way have two shortcomings:</p>
+<ol style="list-style-type: decimal">
+<li><p>They are <em>rigid</em>. If someone lays things out manually, then changes the size of the page, their hard work must be re-done.</p></li>
+<li><p>They are <em>opaque</em>. Telling the computer to display something in italics doesn’t tell it whether that phrase is a book title, in a foreign language, or defining a new term.</p></li>
+</ol>
+<p>Typesetting and markup languages address both problems. Instead of saying what things should look like and where they should go on the page, authors are supposed to tell the computer what kinds of things they are, e.g., a title or a new term. The computer is then supposed to decide what it should look like and where it should go. Separating semantics and appearance in this way also allows people to switch styles easily and consistently by telling the computer, “Typeset all second-level headings in 16-point Garamond, left-aligned.”</p>
+<p>But this approach also has shortcomings:</p>
+<ol style="list-style-type: decimal">
+<li><p>Computers don’t always lay out text the way human beings would because they don’t understand it. People have therefore always insisted on being able to override the computer’s choices, even though it re-introduces rigidity.</p></li>
+<li><p>Specifying their documents’ semantics seems alien to most people, and much more work than just enlarging the title a few times.</p></li>
+<li><p>Interpreting what the user typed in and figuring out what to display takes the computer time. Figuring out why the document doesn’t look like it ought to takes the person even more time; it’s exactly like debugging a program, and debugging is frustrating.</p></li>
+</ol>
+<p>No-one has invented something that avoids all of these problems, so today’s researchers have a confusing variety of choices when it comes to writing:</p>
+<ol style="list-style-type: decimal">
+<li><p>A desktop WYSIWYG tool like Microsoft Word or LibreOffice (both of which work with the <code>.docx</code> format). This is by far the easiest way to create simple things like letters, but it is rigid and opaque, has poor support for laying out equations, and doesn’t work well with version control systems (something we discuss below).</p></li>
+<li><p>A web-based WYSIWYG tool like Google Docs. This has the immediacy of Word or LibreOffice, and makes collaboration easier (since everyone shares one copy of the document). It is still rigid and opaque, though, and a growing number of people are uncomfortable with putting all their eggs in an unaccountable private company’s basket.</p></li>
+<li><p><a href="http://www.latex-project.org/">LaTeX</a> on the desktop. This powerful typesetting language has excellent support for equations and bibliographies. It also works well with version control, since documents are written as plain text. However, it is by far the most complex to learn, and getting things laid out exactly as desired can take many painful hours.</p></li>
+<li><p>Web-based tools like <a href="https://www.authorea.com/">Authorea</a> and <a href="https://www.overleaf.com/">Overleaf</a> that offer users a WYSIWYG editing interface but store documents as LaTeX and re-display them in real time as changes are typed in.</p></li>
+<li><p>HTML. The native language of the web is much (much) simpler than LaTeX, but also does much less: even simple things like footnotes, bibliographic references, and numbered sections aren’t directly supported. It can also be quite verbose, and CSS (the language used to tell browsers how to display HTML) is famously quirky.</p></li>
+<li><p><a href="http://daringfireball.net/projects/markdown/">Markdown</a> was created as a simple alternative to HTML. It uses the conventions of plain-text email: blank lines separate paragraphs, putting something in <code>*asterisks*</code> makes it italic, and so on. It does less than HTML, but requires less typing. Unfortunately, though, almost every implementation adds its own features, so “standard Markdown” is an oxymoron.</p></li>
+</ol>
+<p>And if that wasn’t confusing enough: HTML and Markdown do not support equations directly, but packages exist to allow authors to embed LaTeX-style equations in documents of either kind. The <a href="http://jupyter.org/">Jupyter Notebook</a> relies on one such package, which allows users to put equations and other things in Markdown cells to be rendered in the browser.</p>
+<p>One final consideration is that it is relatively straightforward to integrate desktop text-based systems like LaTeX and other tools that manage computation to support reproducible research. It’s much more complicated, at least right now, to integrate a typical geophysics or bioinformatics pipeline with a Google Doc or LibreOffice so that figures are automatically updated when data changes.</p>
+<blockquote>
+<h2 id="more-heat-than-light">More Heat than Light</h2>
+<p>The division between WYSIWYG and typesetting/markup has more to do with tools than with actual formats. A <code>.docx</code> file actually contains a mix of typesetting commands and text, just like a LaTeX, HTML, or Markdown file. The difference is that the commands in the latter are stored as human-readable text, which means that the standard Unix command-line utilities can process them (though as <a href="http://stackoverflow.com/a/1732454/1403470">this comment on Stack Overflow</a> indicates, there are limits to how much they can actually do). In contrast, the formatting instructions embedded in Microsoft Word and LibreOffice are created by and for specific special-purpose programs, so plain-text tools like <code>grep</code> can’t handle them.</p>
+<p>The same is true of Google Docs: formatting instructions are embedded in the document, then executed by Javascript running in the user’s browser to create the rendered page that the user interacts with. Authorea and Overleaf do the same thing, except their storage format is LaTeX.</p>
+<p>Hard-core programmers may sneer at WYSIWYG tools and their non-textual formats, but their feet are made of clay. Microsoft Word has been around for three decades; its document format has changed several times in those years, but there has still been plenty of time for command-line aficionados to adapt their favored tools to handle it. That hasn’t happened, though, which means that most version control systems still can’t handle the most widely-used documents formats in the world: when confronted with two different version of a Microsoft Word file, all Git and its kin can say is, “Difference detected.” The net effect is that anyone who wants to adopt version control has to abandon the tools that they and their colleagues have used productively for years in the hope of greater productivity at some future date. {: .callout}</p>
+</blockquote>
+<p>The discussion above has assumed that authors are creating letters and papers, but researchers also frequently need to create posters and slides to present their work. PowerPoint is the undisputed queen of presentation tools; while many people have <a href="http://www.edwardtufte.com/tufte/powerpoint">critiqued it</a>, blaming PowerPoint for bad presentations is like blaming fountain pens for bad poetry. PowerPoint and its imitators make it easy for people to use their computer’s screen as if it was a whiteboard. Yes, they can create mind-numbing pages of bullet-point lists if they choose, but they can also freely <em>and easily</em> mix images, diagrams, and text. LaTeX and HTML can do this, but neither makes it easy. In fact, it’s so hard in both that most people don’t bother. Even when they do, the graphical elements are external foreign inserts rather than integral parts of the document.</p>
+<p>All this leaves us in an uncomfortable situation. On the one hand, papers and presentations are integral parts of research projects, and should be tracked and shared just like code and data. On the other hand, as <a href="https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/issues/2#issue-116784345">Stephen Turner said</a>:</p>
+<blockquote>
+<p>…try to explain the notion of compiling a document to an overworked physician you collaborate with. Oh, but before that, you have to explain the difference between plain text and word processing. And text editors. And Markdown/LaTeX compilers. And BiBTeX. And Git. And GitHub. Etc. Meanwhile he/she is getting paged from the OR…</p>
+<p>…as much as we want to convince ourselves otherwise, when you have to collaborate with those outside the scientific computing bubble, the barrier to collaborating on papers in this framework is simply too high to overcome. Good intentions aside, it always comes down to “just give me a Word document with tracked changes,” or similar.</p>
+</blockquote>
+<p>For the foreseeable future, many researchers will therefore continue to use WYSIWYG editors (and their associated formats) rather than switch to pure-text typesetting tools. Hybrid systems like <a href="https://www.authorea.com/">Authorea</a> and <a href="https://www.overleaf.com/">Overleaf</a> may turn this cliff into a ramp, and programmers might finally have the decency to pay attention to the document formats that the other 99% of the human race prefers, but this will be the task of years.</p>
+<p>Since most researchers are already familiar with desktop WYSIWYG systems like Microsoft Word and cloud-based alternatives like Google Docs, this lesson will cover two pure-text alternatives: Markdown for websites and blogs, and LaTeX for manuscripts. We recommend Markdown for the web because it does everything most people want HTML to do, without as much typing. We recommend <em>against</em> it for manuscripts (at least for now) because:</p>
+<ul>
+<li>Most journals don’t accept it as a submission format.</li>
+<li>The odds are against senior collaborators being willing to adopt it. (Of course, the odds are also against them being willing to switch to LaTeX if they’re not already using it…)</li>
+<li>It doesn’t yet do many of the things researchers want (like bibliographic citations).</li>
+</ul>
+<p>LaTeX, on the other hand:</p>
+<ul>
+<li>compiles to PDF and other standard formats,</li>
+<li>does a pretty good job of laying out figures and tables,</li>
+<li>plays nicely with version control,</li>
+<li>is compatible with lots of bibliograpy management software, and</li>
+<li>is accepted by many journals (though this varies widely from discipline to discpline).</li>
+</ul>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://xwmooc.net">xwMOOC</a>
+        <a class="label swc-blue-bg" href="https://github.com/statkclee/data-science">Source</a>
+        <a class="label swc-blue-bg" href="mailto:i@xwmooc.net">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
