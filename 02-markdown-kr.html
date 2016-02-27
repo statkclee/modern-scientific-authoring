@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-59802572-16', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://xwmooc.net" title="xwMOOC">
+          <img alt="xwMOOC banner" src="img/xwMOOC.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1 class="title"></h1>
+          <h2 class="subtitle">마크다운 기초</h2>
+<p>마크다운은 <em>마크다운(markdown)</em> 형식으로, <em>아래 한글</em>, <em>MS 워드</em>, <em>리눅스 오픈 오피스</em>, <em>맥 페이퍼즈</em> 와 달리 화면에 보이는 것이 글자 그대로 텍스트다. 서식은 나중에 부가되는 소프트웨어로 입혀지게 된다.</p>
+<p>이번 학습은 핵심 마크다운 구문 개요를 보여주고 있다. 시작하기 전에, 몇가지 마크다운 방언(?)이 인터넷에 존재하고 있다는 점을 상기한다. <a href="http://commonmark.org/">CommonMark</a>은 표준에 기초해서 생성되었고, <a href="https://help.github.com/articles/github-flavored-markdown/">GFM</a>은 <em>GitHub</em> 에서 개발되어 너무나도 널리 사용되어 이미 표준이 되었다. 이번 학습은 두 마크다운에 <em>공통으로</em> 존재하는 구문을 소개한다. 또다른 흥미롭지만 아직 미완성인 <a href="http://scholarlymarkdown.com/">Scholarly Markdown</a>도 있는데, 학계 저작을 목표로 개발되고 있다.</p>
+<h2 id="메타데이터metadata">메타데이터(Metadata)</h2>
+<p>마크다운으로 문서 메타데이터를 저자가 <code>YAML</code> 헤더에 나타낼 수 있다. <code>YAML</code> 은 “Yet Another Markup Language”를 축약한 두문어지만 중요하지는 않다. <code>YAML</code> 헤더는 다음과 같다.</p>
+<pre class="input"><code>---
+title: &quot;Modern scientific authoring using Markdown and `pandoc`&quot;
+shorttitle: Modern scientific authoring
+author: Timothée Poisot
+date: May 9, 2015
+---</code></pre>
+<p>상기 <code>YAML</code> 헤더 요소는 <em>견본(템플릿)</em> 으로 사용된다.</p>
+<h2 id="기본-구문">기본 구문</h2>
+<h3 id="제목">제목</h3>
+<p>줄에 숫자 기호(<code>#</code>)를 한개부터 여섯개까지 작성해서 텍스트에 작성되는 구분 수준이 결정된다. 예를 들어, 다음 문서는 첫번째 큰 제목 두개(<code>들어가면</code>, <code>방법론</code>)를 갖고, <code>방법론</code> 제목에 중첩된 두번째 제목을 갖는다: <code>동적 인구 모형</code></p>
+<pre class="input"><code># 들어가며
+# 방법론
+## 동적 인구 모형</code></pre>
+<h3 id="텍스트-서식">텍스트 서식</h3>
+<p>마크다운으로 쉽게 <em>이탤릭</em>, <strong>굵게</strong>, <strong><em>이탤릭 굵게</em></strong> 글씨체를 지정할 수 있다. (하지만, 모든 마크다운이 마지막 서식구문에 동의하지는 않는다). 글꼴에 서식 적용은 <code>*</code> 혹은 <code>_</code>을 사용해서 적용한다. 따라서 다음 명령어는 모두 동등하다:</p>
+<pre class="input"><code>*이탤릭* and _이탤릭_
+**굵게** and __굵게__
+***이탤릭 굵게.*** and ___이탤릭 굵게.___</code></pre>
+<h3 id="코드">코드</h3>
+<p>코드는 백틱으로 텍스트를 감싸 <em>인라인(inline)</em> 으로 작성하거나,</p>
+<pre class="input"><code>The program can be compiled using `make`.</code></pre>
+<p>혹은 백틱 3개나 틸드(<code>~</code>) 3개를 한줄씩 코드상하에 넣어 코드블록을 구분한다:</p>
+<pre class="input"><code>```
+이것이
+R, 파이썬
+코드블록 입니다.
+```</code></pre>
+<p>코드블록 첫번째 행에, <em>프로그래밍 언어</em> 를 명세하는 것도 가능하다:</p>
+<pre class="input"><code>`python` 으로 언어를 명세한다:
+
+``` python
+for i in xrange(5):
+  print &quot;This is line &quot; + str(i) + &quot; of this useless loop.\n&quot;
+```
+
+훌륭해 보입니다!</code></pre>
+<p>코드를 사용해서 도표작성에 활용할 수도 있다:</p>
+<pre class="input"><code>텍스트는 이렇게 작성합니다.
+
+    그리고 코드는
+    이렇게 작성합니다.
+</code></pre>
+<h3 id="링크">링크</h3>
+<p>하이퍼링크를 작성하는 방식은 두가지가 있다. 첫번째는 <em>인라인</em> 으로 작성하는 것으로 <code>[텍스트](http://link.tld)</code> 방식을 사용한다. 두번째는 명칭을 지정한 표식을 사용하는 방식이다. 예를 들어:</p>
+<pre class="input"><code>이것은 [첫번째 링크], 다음은 또다른 [두번째 링크][link2].
+
+[첫번째 링크]: http://link.1
+[두번째 링크]: http://link.2</code></pre>
+<p>명칭을 지정한 표식을 사용하는 방식에 대한 구문은 <code>[텍스트][표식]</code> 이 먼저 나오고 나서, <code>[표식]: http://link</code> 표식링크가 문서 다음에 뒤따라 나온다. <code>[표식]</code>이 없는 경우 <code>[텍스트]: link</code> 방식으로 <em>동작하게</em> 된다.</p>
+<h2 id="컴파일">컴파일</h2>
+<p>지금까지 작성원고는 말그대로 마크다운 자체 파일(확장자가 <code>mkd</code>, <code>.markdown</code>, <code>.pandoc</code>)이다. 마크다운을 뭔가 다른 것으로 변환할 필요가 있다. 대체로 PDF, 혹은 텍스트 프로세서에서 볼 수 있는 문서형식이 된다.</p>
+<h3 id="pandoc-으로-컴파일"><code>pandoc</code> 으로 컴파일</h3>
+<p><code>pandoc</code> 프로그램이 이런 작업을 수행하는 나름 최적의 도구다.(물론, <code>jekyll</code> 처럼 웹에 특화된 도구도 존재한다.) 대부분의 명령-라인 도구와 마찬가지로, <code>pandoc</code>은 입력값으로 파일과 일부 선택옵션 <code>플래그</code>를 순차적으로 받는다. <code>pandoc</code>을 호출하는 기본방식은 다음과 같다:</p>
+<pre class="input"><code>pandoc input.ext -o output.ext</code></pre>
+<h4 id="기본-구문-1">기본 구문</h4>
+<p><code>pandoc</code> 아래 숨은 <em>마술</em> 로 입력파일이 출력 파일로 된다. 다음 경우에, 입력파일은 마크다운으로 PDF 파일을 생성하는 마술 명령어는 다음과 같다:</p>
+<pre class="input"><code>pandoc manuscript.md -o manuscript.pdf</code></pre>
+<p>그리고 MS 워드 문서를 생성하려면 다음과 같다.</p>
+<pre class="input"><code>pandoc manuscript.md -o manuscript.doc</code></pre>
+<p><code>docx</code>, <code>otf</code>는 신규 워드문서와 리브레오피스 확장자다. <code>txt</code>, <code>rtf</code>, <code>html</code>을 시도해보고 산출결과가 어떻게 달라지는지 살펴본다.</p>
+<h3 id="견본-템플릿">견본 템플릿</h3>
+<p>최종문서에 작성한 것을 어디에 넣을지 <code>pandoc</code>은 어떻게 알 수 있을까? 다양한 <em>견본 템플릿</em> 이 존재하는데, 견본 템플릿에는 <code>pandoc</code>이 모든 요소를 어디에 넣을지 정리되어 있다. <code>pandoc</code> 웹사이트에서 견본 템플릿을 복사하고 변경할 수 있는 다양한 정보가 담겨있다. 구글로 바로 찾을 수 있는 재사용가능한 견본 템플릿이 상당히 많다.</p>
+<h3 id="선택옵션-플래그">선택옵션 플래그</h3>
+<p>선택옵션 플래그를 통해서 <code>pandoc</code>에 추가적인 인자를 전달한다. <code>pandoc</code> 에서 지원하는 인자가 상당히 많은데, 자세한 정보는 쉘를 열고 <code>man pandoc</code> 도움말을 참조하거나, 인터넷 온라인 문서를 참조한다. 본 학습에서는 참고문헌과 관련된 두가지 선택옵션 플래그에 집중한다.</p>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://xwmooc.net">xwMOOC</a>
+        <a class="label swc-blue-bg" href="https://github.com/statkclee/data-science">Source</a>
+        <a class="label swc-blue-bg" href="mailto:i@xwmooc.net">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
