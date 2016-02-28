@@ -25,7 +25,7 @@ subtitle: 현대적인 과학논문 저작
 
 |   한국어(Korean)      |    영어(English)            |
 |--------------------------------|-----------------------------------|
-| 1. [현재처한 상황](01-mess-kr.html)     | 1. [The Mess We're In](01-mess.html) |
+| 1. [심각한 현재 상황](01-mess-kr.html)     | 1. [The Mess We're In](01-mess.html) |
 | 2. [마크다운 기초](02-markdown-kr.html) | 2. [Markdown Basics](02-markdown.html) |
 | 3. [고급 마크다운](03-advanced-kr.html) | 3. [Advanced Markdown](03-advanced.html) |
 
