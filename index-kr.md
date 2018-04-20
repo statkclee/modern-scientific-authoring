@@ -28,6 +28,8 @@ subtitle: 현대적인 과학논문 저작
 | 1. [심각한 현재 상황](01-mess-kr.html)     | 1. [The Mess We're In](01-mess.html) |
 | 2. [마크다운 기초](02-markdown-kr.html) | 2. [Markdown Basics](02-markdown.html) |
 | 3. [고급 마크다운](03-advanced-kr.html) | 3. [Advanced Markdown](03-advanced.html) |
+| 4. [고급 마크다운]([R 마크다운 실무](https://statkclee.github.io/ds-authoring/rmarkdown-in-production.html)) |  |
+
 
 ## 추가 학습교재       
 
